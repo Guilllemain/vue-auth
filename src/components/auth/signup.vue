@@ -69,8 +69,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
-
   export default {
     data () {
       return {
@@ -104,12 +102,7 @@
           hobbies: this.hobbyInputs.map(hobby => hobby.value),
           terms: this.terms
         }
-        try {
-          const response = await axios.post('users.json', formData);
-          console.log(response);
-        } catch (error) {
-          console.log(error);
-        }
+        this.$store.dispatch('signUp', {email: formData.email, password: formData.password});
       }
     }
   }
