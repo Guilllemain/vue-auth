@@ -5,19 +5,37 @@
     </div>
     <nav>
       <ul>
-        <li>
+        <li v-if="!isAuthenticated">
           <router-link to="/signup">Sign Up</router-link>
         </li>
-        <li>
+        <li v-if="!isAuthenticated">
           <router-link to="/signin">Sign In</router-link>
         </li>
-        <li>
+        <li v-if="isAuthenticated">
           <router-link to="/dashboard">Dashboard</router-link>
+        </li>
+        <li v-if="isAuthenticated">
+          <a href="#" @click.prevent="logout">Dashboard</a>
         </li>
       </ul>
     </nav>
   </header>
 </template>
+
+<script>
+  export default {
+    computed: {
+      isAuthenticated() {
+        return this.$store.getters.isAuthenticated;
+      }
+    },
+    methods: {
+      logout() {
+        
+      }
+    }
+  }
+</script>
 
 <style scoped>
   #header {

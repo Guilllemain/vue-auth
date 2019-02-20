@@ -7,21 +7,14 @@
 </template>
 
 <script>
-  import axios from 'axios'
-
   export default {
-    data() {
-      return {
-        email: ''
+    computed: {
+      email() {
+        return this.$store.getters.user.email;
       }
     },
-    async created() {
-      try {
-        const response = await axios.get(`users.json`);
-        console.log(response);
-      } catch (error) {
-        console.log(error)
-      }
+    created() {
+      this.$store.dispatch('fetchUser');
     }
   }
 </script>
