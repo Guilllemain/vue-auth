@@ -15,7 +15,7 @@
           <router-link to="/dashboard">Dashboard</router-link>
         </li>
         <li v-if="isAuthenticated">
-          <a href="#" @click.prevent="logout">Dashboard</a>
+          <a href="#" @click.prevent="logout">Logout</a>
         </li>
       </ul>
     </nav>
@@ -31,7 +31,7 @@
     },
     methods: {
       logout() {
-        
+        this.$store.dispatch('logout');
       }
     }
   }
