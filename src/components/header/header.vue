@@ -33,6 +33,9 @@
       logout() {
         this.$store.dispatch('logout');
       }
+    },
+    created() {
+      this.$store.dispatch('autoLogin');
     }
   }
 </script>
